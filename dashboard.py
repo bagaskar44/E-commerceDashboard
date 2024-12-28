@@ -17,8 +17,11 @@ st.set_page_config(
 
 @st.cache_data
 def load_cust_each_loc():
-    cust_each_location = pd.read_csv('cust_each_location.csv')
-    cust_each_location = cust_each_location.sample(n=1000, random_state=6)
+    part1 = pd.read_csv('cust_each_location_part1.csv')
+    part2 = pd.read_csv('cust_each_location_part2.csv')
+    cust_each_location = pd.concat([part1, part2], ignore_index=True)
+    # Hanya menggunakan sampel 1000 data random untuk optimalisasi streamlit
+    cust_each_location = cust_each_location.sample(n=1000, random_state=7)
     
     return cust_each_location
 
@@ -34,7 +37,9 @@ def load_order_with_pay():
 
 @st.cache_data
 def load_odr_timestamp():
-    odr_itm_paymnt_timestmp_df = pd.read_csv('odr_itm_paymnt_timestmp_df.csv')
+    part1 = pd.read_csv('odr_itm_paymnt_timestmp_df_part1.csv')
+    part2 = pd.read_csv('odr_itm_paymnt_timestmp_df_part2.csv')    
+    odr_itm_paymnt_timestmp_df = pd.concat([part1, part2], ignore_index=True)
     
     datetime_columns = ["order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
     for column in datetime_columns:
