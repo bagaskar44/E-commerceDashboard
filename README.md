@@ -45,5 +45,5 @@ File `dataset.csv` adalah dataset yang digunakan untuk analisis. Ini berisi bebe
 - **order_with_payments_df**: Informasi order dan pembayaran.
 - **product_category_name_df**: Nama kategori produk
 - **products_df**: Semua informasi tentang produk
-Pastikan dataset diformat dengan benar sebelum menjalankan dashboard.
+
 
