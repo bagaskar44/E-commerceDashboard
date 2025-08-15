@@ -77,7 +77,7 @@ m = generate_map()
 # Data untuk produk dengan revenue terbaik bagi perusahaan
 @st.cache_data
 def load_productname_revenue(x):
-    products_df = pd.read_csv('products_df.csv')
+    products_df = pd.read_csv('data/products_df.csv')
     productname_revenue_df = x.merge(products_df,
                                     on='product_id',
                                     how='inner')
@@ -85,7 +85,7 @@ def load_productname_revenue(x):
 
 @st.cache_data
 def load_productname_eng_revenue(x):
-    product_category_name_df = pd.read_csv('product_category_name_df.csv')
+    product_category_name_df = pd.read_csv('data/product_category_name_df.csv')
     productname_eng_revenue_df = x.merge(product_category_name_df,
                                         on='product_category_name',
                                         how='inner')
@@ -244,4 +244,5 @@ elif analysis_type == "Analisis RFM":
                 st.warning("⚠️ Tidak ada data untuk rentang tanggal yang dipilih.")
 
         st.success("✅ Data berhasil dimuat!")
+
 
